@@ -1,63 +1,64 @@
-html{
+html {
     height: 100%;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body {
-    font: normal .78em arial, helvetica, sans-serif;
-    background: rgb(240, 230, 230);
-    color: rgb(85, 85, 85);}
-}
+body
+{ font: normal .80em 'trebuchet ms', arial, sans-serif;
+  background: rgb(247, 247, 247);
+  color: rgb(85, 85, 85);}
 
 img
 { border: 0;}
 
-h1,h2,h3,h4,h5{
+h1, h2, h3, h4, h5, h6 {
     font: normal 175% 'century gothic', arial, sans-serif;
-    color: black;
+    color: #444;
     margin: 0 0 15px 0;
     padding: 15px 0 5px 0;
 }
 
-
-h3{
-    color: steelblue;
+h2 {
+    color: purple;
 }
 
-h4{
+h4, h5, h6 {
+    margin: 0;
+    padding: 0 0 5px 0;
     font: normal 120% arial, sans-serif;
+    color: purple;
 }
 
-h5{
-    font: italic 120% arial, sans-serif; 
+h5, h6 {
+    font: italic 95% arial, sans-serif;
+    padding: 0 0 15px 0;
+    color: grey;
 }
 
-h4,h5{
-    padding: 0;
-    color: #000066;
-}
-
-a, a:hover {
-    outline: none;
+h6 {
     color: black;
-    text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+a, a:hover
+{ outline: none;
+  text-decoration: none;
+  color: purple;}
+
+a:hover
+{ text-decoration: underline;}
+
+
+ul {
+    margin: 2px 0 22px 17px;
 }
 
-ul{
-    margin: 2px 0 22 17px;
-}
-
-ul li{
-    list-style-type: decimal;
-    margin: 0 0 0 0; 
+ul li {
+    list-style-type: circle;
+    margin: 0 0 6px 0;
     padding: 0 0 4px 5px;
 }
 
@@ -67,7 +68,7 @@ ul li{
 }
 
 #main {
-    width: 1000px;
+    width: 910px;
     background: 20px auto;
 }
 
@@ -76,19 +77,18 @@ ul li{
     height: 200px;
 }
 
-#logo {
-    width: 890px;
+#logo
+{ width: 890px;
     position: relative;
     height: 200px;
 }
 
 
-
 #logo h1, #logo h2 {
-    font: normal 200% 'century gothic', arial, sans-serif;
+    font: normal 300% 'century gothic', arial, sans-serif;
     border-bottom: 0;
     text-transform: none;
-    margin: 10px;
+    margin: 0;
 }
 
 
@@ -102,7 +102,7 @@ ul li{
     float: right;
 }
 
-ul#menu { 
+ul#menu { /* same as writing #menu */
     float: right;
     margin: 0;
 }
@@ -116,7 +116,7 @@ ul#menu li {
 
 ul#menu li a {
     letter-spacing: 0em;
-    font: normal 130% arial, sans-serif;
+    font: normal 105% arial, sans-serif;
     text-transform: uppercase;
     display: block;
     float: left;
@@ -124,7 +124,7 @@ ul#menu li a {
     text-decoration: none;
     padding: 9px 22px 5px 16px;
     text-align: center;
-    color:green;
+    color: green;
     border: 0;
 }
 
@@ -212,6 +212,6 @@ ul#menu li a:hover {
 }
 
 footer a:hover {
-    color: rgb(114, 99, 99);
+    color: #aaa;
     text-decoration: none;
 }
