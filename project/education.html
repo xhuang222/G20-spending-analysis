@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Countries Spending Analysis</title>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h1>
+                        <center>Visualization of Countries Spending</center>
+                    </h1>
+                    <h3>
+                        <center>Education Spending 2012-2018</center>
+                    </h3>
+                </div><!-- logo_text -->
+            </div><!-- logo -->
+            <div id="menubar">
+                <ul id="menu">
+                    <li class="current"><a href="index.html">Home</a></li>
+              <li><a href="education.html">Education</a></li>
+              <li><a href="healthcare.html">Healthcare</a></li>
+              <li><a href="military.html">Military</a></li>
+              <li><a href="more_analysis.html">More Analysis</a></li>
+            </div><!--menubar -->
+        </div><!-- header -->
+
+        <div id="site_content">
+            <div class="sidebar">
+                <h3>Contact Information</h3>
+                <h4>Xiaotian Huang</h4>
+                <h5>xhuang6@gwu.edu</h5>
+               
+                <h3>Useful links</h3>
+                <p>World Bank Group</p> 
+                <p><a href="https://www.worldbank.org/">worldbank.org</a></p>
+                <p>Google API</p> 
+                <p><a href="https://developers.google.com/chart/">developers.google.com/chart</a></p>
+
+            </div><!-- sidebar -->
+
+            <div id="content">
+                <!-- Charts -->
+        
+        <h3>Overview of Adjusted Education Spending ($)</h3>
+        <div id="education_div" style="width: 630px; height: 350px;"></div>
+        <p></p>
+        <h3>Adjusted Education Spending as Percentage of GDP 2012-2018</h3>
+        <div id="shared_education_div" style="width: 630px; height: 350px;"></div>
+        <p></p>
+        <h3>Per Capita Adjusted Education Spending</h3>
+        <div id="per_capita_education_div" style="width: 630px; height:350px;"></div>
+        <p></p>
+        <h3>Annual Adjusted Education Growth rate between 2012-2018</h3>
+        <div id="annual_growth_div" style="width: 630px; height: 350px;"></div>
+        <p></p>
+        <h3>Adjusted Education and GDP (% of GDP per capital) 2012-2018</h3>
+        <div id="education_percapita_div" style="width: 630px; height: 350px;"></div>
+        <p></p>
+        <h1>Conclusion</h1>
+        <p>
+            Based on our data and graph, we can intuitive to see United States is top one education spending in thoes ten countries.
+            Between 2012 to 2018, Brazil increase more education spending in GDP than other nine countries.
+            For annual education growth, we can see that China increase the most. 
+            For each person spending in education, we also can see Brazil is the top one in 2012-2018.
+        </p>
+
+
+
+            </div><!-- content -->
+        </div><!-- site_content -->
+
+        <div id="content_footer">
+            <div id="footer">
+                Copyright &copy; 
+                <script>
+                    var d = new Date();
+                    document.write(d.getFullYear());
+                </script>
+                 | HTML5
+                 | XH
+            </div><!-- footer -->
+        </div><!-- content_footer-->
+    </div><!-- main -->
+</body>
+
+<script type="text/javascript">
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawAllSheets);
+  
+    function drawAllSheets() {
+        drawSheetName('Educationspending', 'SELECT A,B,C,D,E,F,G,H', EducationHandler);
+        drawSheetName('EducationSpendingofGDP', 'SELECT A,B,C,D,E,F,G,H,I,J,K', sharedGDPResponseHandler);
+        drawSheetName('Educationspendingpercapita', 'SELECT A,B,C,D,E,F,G,H', perCapitaEducationResponseHandler);
+        drawSheetName('Educationspending', 'SELECT A,I', annualGrowthResonseHandler);
+        drawSheetName('EducationGDPpercapita', 'SELECT A,B,C,D,E,F,G,H', percapitaResonseHandler);
+    }
+
+   function drawSheetName(sheetName, query, responseHandler) {
+            var queryString = encodeURIComponent(query);
+            var query = new google.visualization.Query(
+                'https://docs.google.com/spreadsheets/d/1TT6Zkx7rnGWYvx3M6wTzpY2ebIOvK3qugMAbRv7Q70E/gviz/tq?sheet=' 
+                        + sheetName + '&headers=1&tq=' + queryString); //Query
+            query.send(responseHandler);
+    } //drawSheetName
+
+    function EducationHandler(response) {
+            var data = response.getDataTable();
+
+
+            var options = {
+                    vAxis: {title: 'Spending ($)'},
+                    hAxis: {title: 'Country'},
+					colorAxis: {colors: ['#ffc850', '#35BDF5']}, //yellow - skyblue
+					title: 'Total Education Expenditure'
+			};
+			var chart = new google.visualization.ColumnChart(document.getElementById('education_div'));
+			chart.draw(data, options);
+
+    } //educationspending
+
+    function sharedGDPResponseHandler(response) {
+            var data = response.getDataTable();
+
+            var options = {
+                    vAxis: {title: '% of GDP'},
+                    hAxis: {title: 'Country'},
+					colorAxis: {colors: ['#e7711c', '#4374e0']}, //orange - blue
+
+			};
+
+            var chart = new google.visualization.LineChart(document.getElementById('shared_education_div'));
+            chart.draw(data, options);
+    } //sharedGDPResponseHandler
+    
+    function annualGrowthResonseHandler(response) {
+            var data = response.getDataTable();
+            var options = {
+					colorAxis: {colors: ['#F5F5DC', '#7FFFD4']}, 
+
+			};
+
+
+            var chart = new google.visualization.GeoChart(document.getElementById('annual_growth_div'));
+
+            chart.draw(data, {});
+
+     } //annualGrowthResonseHandler
+
+
+     function percapitaResonseHandler(response) {
+            var data = response.getDataTable();
+            
+
+            var chart = new google.visualization.ScatterChart(document.getElementById('education_percapita_div'));
+
+            chart.draw(data, {});
+
+     } //percapitalResonseHandler
+
+     function perCapitaEducationResponseHandler(response) {
+            var data = response.getDataTable();
+ 
+            var options = {
+                width: 600,
+                height: 300,
+                legend: {position: 'top', maxLines: 3},
+                bar: {groupWidth: '75%'},
+                isStacked: true
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('per_capita_education_div'));
+
+            chart.draw(data, options);
+
+     } //perCapitaEducationResponseHandler
+
+</script>
+
+
+</html>
