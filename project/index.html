@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Countries Spending Analysis</title>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h1>
+                        <center>Visualization of Countries Spending</center>
+                    </h1>
+                    <h3>
+                        <center>Top 10 contries Education, Healthcare and Military Spending</center>
+                    </h3>
+                </div><!-- logo_text -->
+            </div><!-- logo -->
+            <div id="menubar">
+                <ul id="menu">
+                    <li class="current"><a href="index.html">Home</a></li>
+              <li><a href="education.html">Education</a></li>
+              <li><a href="healthcare.html">Healthcare</a></li>
+              <li><a href="military.html">Military</a></li>
+              <li><a href="more_analysis.html">More Analysis</a></li>
+            </div><!--menubar -->
+        </div><!-- header -->
+
+        <div id="site_content">
+            <div class="sidebar">
+                <h3>Contact Information</h3>
+                <h4>Xiaotian Huang</h4>
+                <h5>xhuang6@gwu.edu</h5>
+               
+                <h3>Useful links</h3>
+                <p>World Bank Group</p> 
+                <p><a href="https://www.worldbank.org/">worldbank.org</a></p>
+                <p>Google API</p> 
+                <p><a href="https://developers.google.com/chart/">developers.google.com/chart</a></p>
+
+            </div><!-- sidebar -->
+
+            <div id="content">
+                <div id="content">
+                  <img id="mainImage" 
+                      src="images/G20.jpg" 
+                      width="550" 
+                      height="330"/>
+                      
+                  <script src="content.js">
+                  </script>
+                </div>
+                <h1>Introduction</h1>
+                <p>The G20 (or Group of Twenty) is an international forum for the governments and central bank governors from 19 countries and the European Union (EU).</p>
+                <p>G20 is the premier forum for international cooperation on the most important aspects of the international economic and financial agenda. It brings together the world's major advanced and emerging economies.
+                </p>
+                <p>Analysis in this project select ten countries from G20. Those ten contries are Brazil, Canada, China, France, Germany, Italy, Japan, India and United Kingdom, United States </p>
+                <p>Analysis will focus on Education, Healthcare Military Spending and GDP, we will also see the relationship between them.</p>
+
+                <h1>Dataset</h1>
+                <p>All data retrieve from database: <a href="https://datacatalog.worldbank.org/dataset/world-development-indicatorss">World Development Indicators.</a>
+                </p>
+              <br /><br /><br />
+            </div><!-- content -->
+        </div><!-- site_content -->
+
+        <div id="content_footer">
+            <div id="footer">
+                Copyright &copy; 
+                <script>
+                    var d = new Date();
+                    document.write(d.getFullYear());
+                </script>
+                 | HTML5
+                 | XH
+            </div><!-- footer -->
+        </div><!-- content_footer-->
+    </div><!-- main -->
+</body>
+</html>

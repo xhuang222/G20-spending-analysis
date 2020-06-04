@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Countries Spending Analysis</title>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h1>
+                        <center>Visualization of Countries Spending</center>
+                    </h1>
+                    <h3>
+                        <center>More Analysis</center>
+                    </h3>
+                </div><!-- logo_text -->
+            </div><!-- logo -->
+            <div id="menubar">
+                <ul id="menu">
+                    <li class="current"><a href="index.html">Home</a></li>
+              <li><a href="education.html">Education</a></li>
+              <li><a href="healthcare.html">Healthcare</a></li>
+              <li><a href="military.html">Military</a></li>
+              <li><a href="more_analysis.html">More Analysis</a></li>
+            </div><!--menubar -->
+        </div><!-- header -->
+
+        <div id="site_content">
+            <div class="sidebar">
+                <h3>Contact Information</h3>
+                <h4>Xiaotian Huang</h4>
+                <h5>xhuang6@gwu.edu</h5>
+               
+                <h3>Useful links</h3>
+                <p>World Bank Group</p> 
+                <p><a href="https://www.worldbank.org/">worldbank.org</a></p>
+                <p>Google API</p> 
+                <p><a href="https://developers.google.com/chart/">developers.google.com/chart</a></p>
+
+            </div><!-- sidebar -->
+
+            <div id="content">
+                <!-- Charts -->
+        <h3>Overview GDP in USD 2012-2018 ($)</h3>
+        <div id="gdp_div" style="width: 630px; height: 350px;"></div>  
+        <p>We can see that United States GDP is very high between 2012-2018.</p>
+        <h3>Annual GDP Growth rate between 2012-2018 (%)</h3>
+        <div id="annual_growth_div" style="width: 630px; height: 350px;"></div>
+        
+        <p>China, France, Germany, India, United Kingdon and United States increse total GDP between 2012-2018.
+            Brazil, Canade and Japan annual GDP growth rate are negative.
+            China increase most in 2012-2018.
+        </p>
+        <h3>Population change in 2012-2018</h3>
+        <div id="population_change_div" style="width:630px; height: 350px;"></div>
+        <p></p>       
+        <h3>2016 GDP in USD ($)</h3>
+        <div id="2016_gdp_div" style="width: 630px; height: 350px;"></div>
+        <p></p>
+        <h3>US 2016 Education, Healthcare and military Spending ($)</h3>
+        <div id="US_2016_div" style="width: 630px; height: 350px;"></div>
+        <p>In 2016, United States spending more in healthcare than spending in education and military  </p>
+
+
+
+            </div><!-- content -->
+        </div><!-- site_content -->
+
+        <div id="content_footer">
+            <div id="footer">
+                Copyright &copy; 
+                <script>
+                    var d = new Date();
+                    document.write(d.getFullYear());
+                </script>
+                 | HTML5
+                 | XH
+            </div><!-- footer -->
+        </div><!-- content_footer-->
+    </div><!-- main -->
+</body>
+
+<script type="text/javascript">
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawAllSheets);
+    google.charts.setOnLoadCallback(piechart)
+  
+    function drawAllSheets() {
+        drawSheetName('GDP', 'SELECT A,B,C,D,E,F,G,H', GDP1Handler);
+        drawSheetName('GDP', 'SELECT A,F', GDPHandler);
+        drawSheetName('GDP', 'SELECT A,I', annualGrowthResonseHandler);
+        drawSheetName('Population1', 'SELECT A,B,C,D,E,F,G,H,I,J,K', populationesponseHandler)
+
+    }
+
+   function drawSheetName(sheetName, query, responseHandler) {
+            var queryString = encodeURIComponent(query);
+            var query = new google.visualization.Query(
+                'https://docs.google.com/spreadsheets/d/1TT6Zkx7rnGWYvx3M6wTzpY2ebIOvK3qugMAbRv7Q70E/gviz/tq?sheet=' 
+                        + sheetName + '&headers=1&tq=' + queryString); //Query
+            query.send(responseHandler);
+    } //drawSheetName
+
+    function annualGrowthResonseHandler(response) {
+            var data = response.getDataTable();
+            
+
+            var chart = new google.visualization.BarChart(document.getElementById('annual_growth_div'));
+
+            chart.draw(data, {});
+
+     } //annualGrowthResonseHandler
+
+    function GDPHandler(response) {
+        var data = response.getDataTable();
+            
+
+            var chart = new google.visualization.BarChart(document.getElementById('2016_gdp_div'));
+
+            chart.draw(data, {});
+    };  //GDPspending
+
+    function populationesponseHandler(response) {
+        var data = response.getDataTable();
+            
+
+            var chart = new google.visualization.LineChart(document.getElementById('population_change_div'));
+
+            chart.draw(data, {});
+    };  //populationchange
+
+    function GDP1Handler(response) {
+        var data = response.getDataTable();
+            
+
+            var chart = new google.visualization.BarChart(document.getElementById('gdp_div'));
+
+            chart.draw(data, {});
+    };  //GDPspending
+   
+
+    function piechart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Category', '%'],
+          ['Education', 4.47450844131142],
+          ['Military', 3.20789216926033],
+          ['Healthcare', 17.197260260582],
+          ['Others', 75.1],
+        ]);
+
+        var options = {
+          title: 'US 2016 Education, Healthcare and military spending',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('US_2016_div'));
+        chart.draw(data, {});
+    };
+</script>
+
+
+</html>
