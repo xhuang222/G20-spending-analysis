@@ -9,12 +9,18 @@ html{
 
 body {
     font: normal .78em arial, helvetica, sans-serif;
-    background: rgb(240, 230, 230);
-    color: rgb(85, 85, 85);}
+    background: url(images/back2.jpg);
+    color: rgb(85, 85, 85);
+    margin: 15px 35px 25px 15px;
+}
+
 
 
 img
-{ border: 0;}
+{   border: 0;
+    margin-left: -25px;
+
+}
 
 h1,h2,h3,h4,h5{
     font: normal 175% 'century gothic', arial, sans-serif;
@@ -22,6 +28,7 @@ h1,h2,h3,h4,h5{
     margin: 0 0 15px 0;
     padding: 15px 0 5px 0;
 }
+
 
 
 h3{
@@ -50,6 +57,8 @@ a, a:hover {
 a:hover {
     text-decoration: underline;
 }
+
+
 
 ul{
     margin: 2px 0 22 17px;
@@ -82,94 +91,89 @@ ul li{
     height: 200px;
 }
 
+#logo h1{
+    padding-top: 65px;
+}
 
+#logo h1{
+    font-size: 300%;
+}
 
 #logo h1, #logo h2 {
-    font: normal 200% 'century gothic', arial, sans-serif;
+    font: 'century gothic', arial, sans-serif;
     border-bottom: 0;
     text-transform: none;
-    margin: 10px;
+    margin: 5px;
 }
 
 
 #menubar {
-    width: 890px;
+    width: 980px;
     height: 35px;
     padding: 8px 0 0 0;
-    margin: -45px 0 0 0;
+    margin: -190px 0 0 0;
     position: relative;
-    z-index: 1;
-    float: right;
+    z-index: 2;
+    float: center;
 }
 
-ul#menu { 
-    float: right;
+ul#menu {  
     margin: 0;
+    width: 150%;
+    margin-left: -380px;
+    position: fixed;
+    background: url(images/back2.jpg) repeat-x;
+    top: 0;
 }
 
-ul#menu li {
+ul#menu li{
     float: left;
-    margin: 5px 0 0 0;
-    padding: 0 0 0 6px;
+    margin: 0px -40px 0 90px;
+    padding: 7px 0px 7px 50px;
     list-style: none;
 }
 
 ul#menu li a {
     letter-spacing: 0em;
-    font: normal 130% arial, sans-serif;
+    font: normal 150% arial, sans-serif;
     text-transform: uppercase;
-    display: block;
-    float: left;
+    float: center;
     height: 20px;
+    margin-left: 20px;
     text-decoration: none;
     padding: 9px 22px 5px 16px;
     text-align: center;
-    color:green;
+    color:darkblue;
     border: 0;
 }
 
-ul#menu li.selected a {
-    height: 25px;
-    color: #111;
-    padding: 7px 22px 5px 16px;
-}
 
-ul#menu li.selected {
-    margin: 7px 0 0 0;
-    background: #f8f8f8;
-}
+
+    
 
 ul#menu li a:hover {
     color: #888;
 }
 
 #site_content {
-    width: 890px;
+    width: 1100px;
+    margin-left: -40px;
+    margin-right: -10px;
     overflow: hidden;
-    background: #f8f8f8;
-}
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(231, 231, 231);
+} 
+
 
 .sidebar {
     float: right;
     width: 198px;
     padding: 20px 25px 15px 15px;
+    background: oldlace;
 }
 
-.sidebar ul {
-    width: 178px;
-    padding: 4px 0 0 0;
-    margin: 4px 0 30px 0;
-}
 
-.sidebar li {
-    list-style: none;
-    padding: 0 0 7px 0;
-}
 
-.sidebar li a, .sidebar li a:hover {
-    padding: 0 0 0 40px;
-    display: block;
-}
 
 #content {
     text-align: left;
@@ -179,23 +183,19 @@ ul#menu li a:hover {
 }
 
 #content p {
-    margin: 0 0 9px 0;
-    line-height: 1.3em;
-}
-
-#content ul {
-    margin: 2px 0 22px 0;
-}
-
-#content ul li {
-    list-style-type: none;
-    margin: 0 0 6px 0;
-    padding: 0 0 4px 25px;
+    font-size: 130%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 10px 0px 10px 0;
     line-height: 1.5em;
 }
+
+
+
 #footer {
-    width: 890px;
+    width: 1100px;
     height: 33px;
+    margin-left: -40px;
+    margin-right: -10px;
     padding: 20px 0 4px 0;
     text-align: center;
     background: #555;
@@ -206,12 +206,3 @@ ul#menu li a:hover {
     font-size: 90%;
 }
 
-#footer a {
-    color: #fff;
-    text-transform: none;
-}
-
-footer a:hover {
-    color: rgb(114, 99, 99);
-    text-decoration: none;
-}
