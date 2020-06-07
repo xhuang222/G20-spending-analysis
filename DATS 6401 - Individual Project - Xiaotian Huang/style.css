@@ -11,7 +11,9 @@ body {
     font: normal .78em arial, helvetica, sans-serif;
     background: url(images/back2.jpg);
     color: rgb(85, 85, 85);
-    margin: 15px 35px 25px 15px;
+    margin: 10px auto;
+    min-width: 780px;
+    max-width: 1260px
 }
 
 
@@ -57,7 +59,6 @@ a, a:hover {
 a:hover {
     text-decoration: underline;
 }
-
 
 
 ul{
@@ -111,23 +112,23 @@ ul li{
     width: 980px;
     height: 35px;
     padding: 8px 0 0 0;
-    margin: -190px 0 0 0;
+    margin: -210px 0 0 0;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     float: center;
 }
 
-ul#menu {  
-    margin: 0;
+ul#menu {
+    float: left;  
+    margin: 0px;
     width: 150%;
     margin-left: -350px;
     position: fixed;
-    top: 0;
 }
 
 ul#menu li{
-
-    margin: 0px -40px 0 2px;
+    
+    margin: 0px -40px 0 10px;
     padding: 11px 0px 7px 50px;
     list-style: none;
 }
@@ -144,11 +145,7 @@ ul#menu li a {
     text-align: center;
     color:darkblue;
     border: 0;
-}
-
-
-
-    
+}    
 
 ul#menu li a:hover {
     color: #888;
@@ -162,7 +159,6 @@ ul#menu li a:hover {
     background: rgb(255, 255, 255);
     border: 1px solid rgb(231, 231, 231);
 } 
-
 
 .sidebar {
     float: right;
