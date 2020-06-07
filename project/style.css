@@ -2,6 +2,8 @@ html{
     height: 100%;
 }
 
+
+
 *{
     margin: 0;
     padding: 0;
@@ -12,8 +14,8 @@ body {
     background: url(images/back2.jpg);
     color: rgb(85, 85, 85);
     margin: 10px auto;
-    min-width: 780px;
-    max-width: 1260px
+    min-width: 600px;
+    max-width: 960px
 }
 
 
