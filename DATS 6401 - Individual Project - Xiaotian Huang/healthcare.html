@@ -16,17 +16,17 @@
                         <center>Visualization of Countries Spending</center>
                     </h1>
                     <h2>
-                        <center>Military Spending 2012-2018</center>
+                        <center>Healthcare Spending 2012-2018</center>
                     </h2>
                 </div><!-- logo_text -->
             </div><!-- logo -->
             <div id="menubar">
                 <ul id="menu">
                     <li class="current"><a href="index.html">Home</a></li>
-              <li><a href="education.html">Education</a></li>
-              <li><a href="healthcare.html">Healthcare</a></li>
-              <li><a href="military.html">Military</a></li>
-              <li><a href="more_analysis.html">More Analysis</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="healthcare.html">Healthcare</a></li>
+                    <li><a href="military.html">Military</a></li>
+                    <li><a href="more_analysis.html">More Analysis</a></li>
             </div><!--menubar -->
         </div><!-- header -->
 
@@ -46,41 +46,45 @@
                 <h4>Github io<h4> 
                 <h5><a href="https://xhuang222.github.io/G20-spending-analysis/project/index.html">xhuang222.github.io</a><h5>
                 <h4>Zenodo</p> 
-                    <h5><a href="https://zenodo.org/record/3883436#.XtxWl2pKjBI">zenodo.org</a><h5>
+                <h5><a href="https://zenodo.org/record/3883436#.XtxWl2pKjBI">zenodo.org</a><h5>
+
 
             </div><!-- sidebar -->
 
             <div id="content">
                 <div id="content">
                     <img id="mainImage" 
-                        src="images/military.jpg" 
+                        src="images/health.jpg" 
                         width="700" 
                         height="400"/>
                             
                 </div>
         
-        <h1>Overview of Military Spending ($)</h1>
-        <div id="military_div" style="width: 700px; height: 400px;"></div>
+        <h1>Overview of Healthcare Spending ($)</h1>
+        <div id="healthcare_div" style="width: 700px; height: 400px;"></div>
         <p></p>
-        <h1>Military Spending as Percentage of GDP 2012-2018</h1>
-        <div id="shared_military_div" style="width: 700px; height: 400px;"></div>
+        <h1>Healthcare Spending as Percentage of GDP 2012-2018</h1>
+        <div id="shared_healthcare_div" style="width: 700px; height: 400px;"></div>
         <p></p>
-        <h1>Per Capita Military Spending</h1>
-        <div id="per_capita_military_div" style="width: 700px; height: 400px;"></div>
+        <h1>Per Capita Healthcare Spending</h1>
+        <div id="per_capita_healthcare_div" style="width: 700px; height: 400px;"></div>
         <p></p>
-        <h1>Military and GDP (% of GDP per capital) 2012-2018</h1>
-        <div id="military_percapita_div" style="width: 700px; height: 400px;"></div>
+        <h1>Annual Healthcare Growth rate between 2012-2018</h1>
+        <div id="annual_growth_div" style="width: 700px; height: 400px;"></div>
+        <p></p>
+        <h1>Healthcare and GDP (% of GDP per capital) 2012-2018</h1>
+        <div id="healthcare_percapita_div" style="width: 700px; height: 400px;"></div>
         <p></p>
         <h1>Conclusion</h1>
         <p>From 2012 to 2018</p>
-        <p>•    The United States ranked top on overall military expenditure. 
+        <p>•    The United States ranked top on overall healthcare expenditure.
         </p>
-        <p>•    The United States ranked top on per capita military expenditure.
+        <p>•    The United States ranked top on per capita healthcare expenditure.
+        </p>
+        <p>•    China had the highest annual growth rate in healthcare expenditure.
 
         </p>
-        <p>•    Brazil decreased military expenditure.
 
-        </p>
 
 
 
@@ -108,10 +112,11 @@
     google.charts.setOnLoadCallback(drawAllSheets);
   
     function drawAllSheets() {
-        drawSheetName('Militaryspending', 'SELECT A,B,C,D,E,F,G,H', MilitaryHandler);
-        drawSheetName('MilitarySpendingofGDP', 'SELECT A,B,C,D,E,F,G,H,I,J,K', sharedGDPResponseHandler);
-        drawSheetName('Militaryspendingpercapita', 'SELECT A,B,C,D,E,F,G,H', perCapitaMilitaryResponseHandler);
-        drawSheetName('MilitaryGDPpercapita', 'SELECT A,B,C,D,E,F,G,H', percapitaResonseHandler);
+        drawSheetName('Healthcarespending', 'SELECT A,B,C,D,E,F,G,H', HealthcareHandler);
+        drawSheetName('HealthcareSpendingofGDP', 'SELECT A,B,C,D,E,F,G,H,I,J,K', sharedGDPResponseHandler);
+        drawSheetName('Healthcarespendingpercapita', 'SELECT A,B,C,D,E,F,G,H', perCapitaHealthcareResponseHandler);
+        drawSheetName('Healthcarespending', 'SELECT A,I', annualGrowthResonseHandler);
+        drawSheetName('HealthcareGDPpercapita', 'SELECT A,B,C,D,E,F,G,H', percapitaResonseHandler);
     }
 
    function drawSheetName(sheetName, query, responseHandler) {
@@ -122,7 +127,7 @@
             query.send(responseHandler);
     } //drawSheetName
 
-    function MilitaryHandler(response) {
+    function HealthcareHandler(response) {
             var data = response.getDataTable();
 
 
@@ -130,55 +135,63 @@
                     vAxis: {title: 'Spending ($)'},
                     hAxis: {title: 'Country'},
 					colorAxis: {colors: ['#ffc850', '#35BDF5']}, //yellow - skyblue
-					title: 'Total Military Expenditure'
+					title: 'Total Healthcare Expenditure'
 			};
-			var chart = new google.visualization.ColumnChart(document.getElementById('military_div'));
+			var chart = new google.visualization.ColumnChart(document.getElementById('healthcare_div'));
 			chart.draw(data, options);
 
-    } //militaryspending
+    } //educationspending
 
     function sharedGDPResponseHandler(response) {
             var data = response.getDataTable();
 
             var options = {
                     vAxis: {title: '% of GDP'},
-                    hAxis: {title: 'Country'},
+                    hAxis: {title: 'Country',format : '####'},
 					colorAxis: {colors: ['#ffc850', '#35BDF5']}, //yellow - skyblue
 
 			};
 
-            var chart = new google.visualization.LineChart(document.getElementById('shared_military_div'));
+            var chart = new google.visualization.LineChart(document.getElementById('shared_healthcare_div'));
             chart.draw(data, options);
     } //sharedGDPResponseHandler
     
+    function annualGrowthResonseHandler(response) {
+            var data = response.getDataTable();
+            
+
+            var chart = new google.visualization.GeoChart(document.getElementById('annual_growth_div'));
+
+            chart.draw(data, {});
+
+     } //annualGrowthResonseHandler
 
 
      function percapitaResonseHandler(response) {
             var data = response.getDataTable();
             
 
-            var chart = new google.visualization.ScatterChart(document.getElementById('military_percapita_div'));
+            var chart = new google.visualization.ScatterChart(document.getElementById('healthcare_percapita_div'));
 
             chart.draw(data, {});
 
      } //percapitalResonseHandler
 
-     function perCapitaMilitaryResponseHandler(response) {
+     function perCapitaHealthcareResponseHandler(response) {
             var data = response.getDataTable();
  
             var options = {
-                width: 700,
-                height: 400,
+
                 legend: {position: 'top', maxLines: 3},
                 bar: {groupWidth: '75%'},
                 isStacked: true
             };
 
-            var chart = new google.visualization.BarChart(document.getElementById('per_capita_military_div'));
+            var chart = new google.visualization.BarChart(document.getElementById('per_capita_healthcare_div'));
 
             chart.draw(data, options);
 
-     } //perCapitaMilitaryResponseHandler
+     } //perCapitaHealthcareResponseHandler
 
 </script>
 

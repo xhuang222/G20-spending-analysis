@@ -74,7 +74,7 @@
         <h1>2016 GDP in USD ($)</h1>
         <div id="2016_gdp_div" style="width: 700px; height: 400px;"></div>
         <p></p>
-        <h1>US 2016 Education, Healthcare and Military Spending ($)</h1>
+        <h1>United States 2016 Education, Healthcare and Military Spending ($)</h1>
         <div id="US_2016_div" style="width: 700px; height: 400px;"></div>
         <p>• In 2016, the United States spent more on healthcare than on education and military.
         </p>
@@ -142,7 +142,9 @@
     function populationesponseHandler(response) {
         var data = response.getDataTable();
             
-
+            var options = {
+                    hAxis: {format : '####'},
+            };
             var chart = new google.visualization.LineChart(document.getElementById('population_change_div'));
 
             chart.draw(data, {});

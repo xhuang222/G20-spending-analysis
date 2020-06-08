@@ -145,7 +145,7 @@
 
             var options = {
                     vAxis: {title: '% of GDP'},
-                    hAxis: {title: 'Country'},
+                    hAxis: {title: 'Country', format : '####'},
 					colorAxis: {colors: ['#e7711c', '#4374e0']}, //orange - blue
 
 			};
@@ -171,6 +171,7 @@
 
      function percapitaResonseHandler(response) {
             var data = response.getDataTable();
+
             
 
             var chart = new google.visualization.ScatterChart(document.getElementById('education_percapita_div'));
@@ -183,7 +184,6 @@
             var data = response.getDataTable();
  
             var options = {
-
                 legend: {position: 'top', maxLines: 3},
                 bar: {groupWidth: '75%'},
                 isStacked: true
