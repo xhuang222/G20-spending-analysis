@@ -111,9 +111,9 @@ ul li{
 
 #menubar {
     width: 980px;
-    height: 35px;
-    padding: 8px 0 0 0;
-    margin: -150px 0 0 60px;
+    height: 30px;
+    padding: 10px 0 0 0;
+    margin: -210px 0 0 60px;
     position: relative;
     z-index: 1;
     float: center;
